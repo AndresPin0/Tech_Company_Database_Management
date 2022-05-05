@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="28.0" layoutY="293.0" prefHeight="16.0" prefWidth="540.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="16.0" layoutX="31.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="540.0" />
-      <Rectangle fx:id="pBarRCT" arcHeight="5.0" arcWidth="5.0" fill="#50738a" height="16.0" layoutX="31.0" layoutY="54.0" stroke="BLACK" strokeType="INSIDE" width="540.0" />
+      <ImageView fx:id="iLogo" fitHeight="402.0" fitWidth="727.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../docs/Resources/DATA%20BASE%20MANAGER.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="13.0" layoutY="329.0" prefHeight="13.0" prefWidth="570.0">
+         <children>
+            <Rectangle fx:id="pBarRCT1" arcHeight="5.0" arcWidth="5.0" fill="#ffb91f" height="5.0" layoutX="2.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" styleClass="p-bar-track" />
+         </children>
+      </Pane>
+      <Rectangle fx:id="iLogo" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="7.0" layoutX="71.0" layoutY="358.0" stroke="BLACK" strokeType="INSIDE" styleClass="p-bar" width="570.0" />
    </children>
 </Pane>

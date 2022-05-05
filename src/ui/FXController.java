@@ -42,7 +42,6 @@ public class FXController implements Initializable {
     private Pane pProgressBar;
 
     private final String SRC_FILE = "data/persistent/Data.txt";
-    @SuppressWarnings("FieldMayBeFinal")
     private model.Cd fb;
     private FXEmployee xPlayer;
     private FXListEmployees xListPlayer;
@@ -62,7 +61,7 @@ public class FXController implements Initializable {
     }
 
     public void setImages() {
-        iLogo.setImage(new Image(new File("resources/img/logo/logo_small.png").toURI().toString()));
+        iLogo.setImage(new Image(new File("docs/resources/DATA BASE MANAGER.png").toURI().toString()));
         iPlayer.setImage(new Image(new File("resources/img/others/person.png").toURI().toString()));
 
     }
@@ -82,13 +81,12 @@ public class FXController implements Initializable {
         Scene scene = new Scene(root);
         newStage.setScene(scene);
         newStage.setTitle("Simulation");
-        newStage.getIcons().add(new Image(new File("resources/img/logo/logo_small_icon_only.png").toURI().toString()));
         newStage.setResizable(false);
         newStage.show();
     }
 
     public void openListPlayers() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/ListPlayers.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui/ui.fxml/ListEmployees.fxml"));
         fxmlLoader.setController(xListPlayer);
         Parent root = fxmlLoader.load();
         newStage(root);
@@ -110,7 +108,7 @@ public class FXController implements Initializable {
 
     @FXML
     public void onBPlayers(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/Employees.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui/ui.fxml/Employee.fxml"));
         fxmlLoader.setController(xPlayer);
         Parent root = fxmlLoader.load();
         newStage(root);

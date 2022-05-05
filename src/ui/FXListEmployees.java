@@ -86,7 +86,7 @@ public class FXListEmployees implements Initializable {
             employeeSelected = tblPlayer.getSelectionModel().getSelectedItem();
             if (employeeSelected != null) {
                 xGUI.refreshPlayer(employeeSelected);
-                xGUI.showAlert(true, "Se ha seleccionado correctamente el jugador", stackPane);
+                xGUI.showAlert(true, "You have selected the employee successfully", stackPane);
             }
         }
     }
