@@ -1,15 +1,15 @@
 package model.Structures;
-//import model.interfaces.IAVL;
-import java.io.*;
 
-public class TreeAVL<T extends Comparable<T>, K> extends TreeBST<T, V> implements ITreeAVL<T, V, TreeNode<T,V>>, Serializable {
-    private static final long svUID = 1;
+import java.io.Serializable;
 
-    private int rF;
-    public static final int MAIN_DIFFERENCE = 1;
+public class TreeAVL<K extends Comparable<K>, V> extends TreeBST<K, V> implements ITreeAVL<K, V, Node<K,V>>, Serializable {
+    private static final long serialVersionUID = 1;
+
+    private int rollingFactor;
+    public static final int HIGH_DIFFERENCE = 1;
 
     @Override
-    public int height(Node<T, K> node) {
+    public int height(Node<K, V> node) {
         if (node == null) return -1;
         else if (node.left() == null && node.right() == null) return 0;
         else {
@@ -19,9 +19,9 @@ public class TreeAVL<T extends Comparable<T>, K> extends TreeBST<T, V> implement
 
 
     @Override
-    public void rightRotate(Node<T, K> x) {
+    public void rightRotate(Node<K, V> x) {
         if (x == null) return;
-        Node<T,K> pivot = x.left();
+        Node<K, V> pivot = x.left();
         if (pivot == null) return;
         if (x.parent() == null) {
             setRoot(pivot);
@@ -36,9 +36,9 @@ public class TreeAVL<T extends Comparable<T>, K> extends TreeBST<T, V> implement
     }
 
     @Override
-    public void leftRotate(Node<T, K> x) {
+    public void leftRotate(Node<K, V> x) {
         if (x == null) return;
-        Node<T, K> pivot = x.right();
+        Node<K, V> pivot = x.right();
         if (pivot == null) return;
         if (x.parent() == null) {
             setRoot(pivot);
@@ -52,9 +52,9 @@ public class TreeAVL<T extends Comparable<T>, K> extends TreeBST<T, V> implement
     }
 
     @Override
-    public void insert(T key, K value) {
+    public void insert(K key, V value) {
         super.insert(key, value);
-        Node<T, K> inserted = search(root(), key);
+        Node<K, V> inserted = search(root(), key);
         while (inserted != null) {
             balanceAgain(inserted);
             inserted = inserted.parent();
@@ -62,8 +62,8 @@ public class TreeAVL<T extends Comparable<T>, K> extends TreeBST<T, V> implement
     }
 
     @Override
-    public void delete(T key) {
-        Node<T, K> deleted = search(root(), key);
+    public void delete(K key) {
+        Node<K, V> deleted = search(root(), key);
         super.delete(key);
         while (deleted != null) {
             balanceAgain(deleted);
@@ -75,25 +75,25 @@ public class TreeAVL<T extends Comparable<T>, K> extends TreeBST<T, V> implement
         return isBalanced(super.root());
     }
 
-    public boolean isBalanced(Node<T, K> root){
+    public boolean isBalanced(Node<K, V> root){
         if(root.right() != null && root.left() !=null){
-            rF = height(root.right()) - height(root.left());
-            return height(root.right()) - height(root.left()) <= MAIN_DIFFERENCE && height(root.right()) - height(root.left()) > -2;
+            rollingFactor = height(root.right()) - height(root.left());
+            return height(root.right()) - height(root.left()) <= HIGH_DIFFERENCE && height(root.right()) - height(root.left()) > -2;
         }else if(root.right()!=null){
-            rF = height(root.right());
-            return height(root.right()) <=MAIN_DIFFERENCE && height(root.right())> -2;
+            rollingFactor = height(root.right());
+            return height(root.right()) <=HIGH_DIFFERENCE && height(root.right())> -2;
         } else if(root.left()!=null){
-            rF = -height(root.left());
-            return -height(root.left()) <=MAIN_DIFFERENCE && -height(root.left())> -2;
+            rollingFactor = -height(root.left());
+            return -height(root.left()) <=HIGH_DIFFERENCE && -height(root.left())> -2;
         }else{
             return true;
         }
     }
 
 
-    public void balanceAgain(Node<T,K> root){
+    public void balanceAgain(Node<K,V> root){
         if(!isBalanced(root)){
-            if(rF >1){
+            if(rollingFactor>1){
                 if (balance(root.right()) < 0) {
                     rightRotate(root.right());
                 }else{
@@ -110,13 +110,12 @@ public class TreeAVL<T extends Comparable<T>, K> extends TreeBST<T, V> implement
         }
     }
 
-    public int getrF() {
-        return rF;
+    public int getRollingFactor() {
+        return rollingFactor;
     }
 
     @Override
-    public int balance(Node<T,K> node){
+    public int balance(Node<K,V> node){
         return height(node.right())-height(node.left());
     }
 }
-

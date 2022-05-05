@@ -35,5 +35,3 @@ public class Country {
         this.end = end;
     }
 }
-{
-}

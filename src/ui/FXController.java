@@ -41,16 +41,16 @@ public class FXController implements Initializable {
     @FXML
     private Pane pProgressBar;
 
-    private final String SAVE_PATH_FILE = "data/persistent/Data.txt";
+    private final String SRC_FILE = "data/persistent/Data.txt";
     @SuppressWarnings("FieldMayBeFinal")
     private model.Cd fb;
     private FXEmployee xPlayer;
-    private FXListPlayers xListPlayer;
+    private FXListEmployees xListPlayer;
 
-    public FXController(model.objects.Cd fb) {
+    public FXController(model.Cd fb) {
         this.fb = fb;
         xPlayer = new FXEmployee(this.fb, this);
-        xListPlayer = new FXListPlayers(this.fb, this);
+        xListPlayer = new FXListEmployees(this.fb, this);
 
     }
 
@@ -67,12 +67,12 @@ public class FXController implements Initializable {
 
     }
 
-    public void setFb(model.objects.Cd fb) {
+    public void setFb(model.Cd fb) {
         this.fb = fb;
     }
 
     public void saveData() throws IOException {
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE));
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SRC_FILE));
         oos.writeObject(this.fb);
         oos.close();
     }
@@ -102,7 +102,7 @@ public class FXController implements Initializable {
             dialog.close();
         });
         content.setActions(button);
-        String header = (success) ? "¡Listo!" : "¡Error!";
+        String header = (success) ? "¡Success!" : "¡Error!";
         content.setHeading(new Text(header));
         content.setBody(new Text(msg));
         dialog.show();
@@ -110,7 +110,7 @@ public class FXController implements Initializable {
 
     @FXML
     public void onBPlayers(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/Players.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/Employees.fxml"));
         fxmlLoader.setController(xPlayer);
         Parent root = fxmlLoader.load();
         newStage(root);
@@ -127,13 +127,13 @@ public class FXController implements Initializable {
             int amount = Integer.parseInt(txtAmount.getText());
             pProgressBar.setVisible(true);
             boolean imported = fb.importData(fb, amount);
-            String msg = (imported) ? "Yei" : "Oh no";
+            String msg = (imported) ? "Success" : "Error";
             pProgressBar.setVisible(false);
             showAlert(imported, msg, stackPane);
             txtAmount.setText("");
             saveData();
         }catch (NumberFormatException e){
-            this.showAlert(false, "¡Formato del numero incorrecto!", stackPane);
+            this.showAlert(false, "¡Format number is incorrect!", stackPane);
 
         }
     }

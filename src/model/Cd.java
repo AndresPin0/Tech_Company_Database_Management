@@ -8,22 +8,22 @@ import javafx.stage.FileChooser;
 import model.Structures.TreeAVL;
 import model.Structures.TreeBST;
 import model.Structures.TreeRBT;
-import threads.FileUpload;
+import model.Structures.FileUpload;
 
 public class Cd implements Serializable {
 
-    int totalPeople = 0;
-    private TreeRBT<String, Employee> RBTPersonName;
-    private TreeAVL<Integer, Employee> AVLPersonCode;
-    private TreeBST<String, Employee> BSTPersonLastName;
-    private TreeRBT<String, Employee> RBTPersonFullName;
+    int totalEmployees = 0;
+    private TreeRBT<String, Employee> RBTEmployeeName;
+    private TreeAVL<Integer, Employee> AVLEmployeeCode;
+    private TreeBST<String, Employee> BSTEmployeeLastName;
+    private TreeRBT<String, Employee> RBTEmployeeFullName;
     private static final long serialVersionUID = 1;
 
     public Cd() {
-        RBTPersonName = new TreeRBT<>();
-        RBTPersonFullName = new TreeRBT<>();
-        BSTPersonLastName = new TreeBST<>();
-        AVLPersonCode = new TreeAVL<>();
+        RBTEmployeeName = new TreeRBT<>();
+        RBTEmployeeFullName = new TreeRBT<>();
+        BSTEmployeeLastName = new TreeBST<>();
+        AVLEmployeeCode = new TreeAVL<>();
     }
 
     public File fileChooser() {
@@ -36,9 +36,9 @@ public class Cd implements Serializable {
         try {
             String names = fileChooser().getAbsolutePath();
             String lastNames = fileChooser().getAbsolutePath();
-            BufferedReader br1 = new BufferedReader(new FileReader(names));
-            BufferedReader br2 = new BufferedReader(new FileReader(lastNames));
-            FileUpload fup = new FileUpload(br1, br2, fb, amount);
+            BufferedReader br = new BufferedReader(new FileReader(names));
+            BufferedReader rb = new BufferedReader(new FileReader(lastNames));
+            FileUpload fup = new FileUpload(br, rb, fb, amount);
             fup.start();
             int num = 0;
             while (fup.isAlive()) {
@@ -50,60 +50,60 @@ public class Cd implements Serializable {
         }
     }
 
-    public int getTotalPeople() {
-        return totalPeople;
+    public int getTotalEmployees() {
+        return totalEmployees;
     }
 
-    public void setTotalPeople(int totalPeople) {
-        this.totalPeople = totalPeople;
+    public void setTotalEmployees(int totalEmployees) {
+        this.totalEmployees = totalEmployees;
     }
 
-    public RBT<String, Person> getRBTPersonName() {
-        return RBTPersonName;
+    public TreeRBT<String, Employee> getRBTEmployeeName() {
+        return RBTEmployeeName;
     }
 
-    public void setRBTPersonName(RBT<String, Person> BSTPersonName) {
-        this.RBTPersonName = BSTPersonName;
+    public void setRBTEmployeeName(TreeRBT<String, Employee> BSTEmployeeName) {
+        this.RBTEmployeeName = BSTEmployeeName;
     }
 
-    public AVL<Integer, Person> getAVLPersonCode() {
-        return AVLPersonCode;
+    public TreeAVL<Integer, Employee> getAVLEmployeeCode() {
+        return AVLEmployeeCode;
     }
 
-    public void setAVLPersonCode(AVL<Integer, Person> RBTPersonCode) {
-        this.AVLPersonCode = RBTPersonCode;
+    public void setAVLEmployeeCode(TreeAVL<Integer, Employee> RBTEmployeeCode) {
+        this.AVLEmployeeCode = RBTEmployeeCode;
     }
 
-    public BST<String, Person> getBSTPersonLastName() {
-        return BSTPersonLastName;
+    public TreeBST<String, Employee> getBSTEmployeeLastName() {
+        return BSTEmployeeLastName;
     }
 
-    public void setBSTPersonLastName(BST<String, Person> BSTPersonLastName) {
-        this.BSTPersonLastName = BSTPersonLastName;
+    public void setBSTEmployeeLastName(TreeBST<String, Employee> BSTEmployeeLastName) {
+        this.BSTEmployeeLastName = BSTEmployeeLastName;
     }
 
-    public RBT<String, Person> getRBTPersonFullName() {
-        return RBTPersonFullName;
+    public TreeRBT<String, Employee> getRBTEmployeeFullName() {
+        return RBTEmployeeFullName;
     }
 
-    public void setRBTPersonFullName(RBT<String, Person> AVLPersonFullName) {
-        this.RBTPersonFullName = RBTPersonFullName;
+    public void setRBTEmployeeFullName(TreeRBT<String, Employee> AVLPersonFullName) {
+        this.RBTEmployeeFullName = RBTEmployeeFullName;
     }
 
     public void addEmployee(Employee employee) {
-        setTotalPeople(getTotalPeople() + 1);
-        getRBTPersonFullName().insert(employee.getFullName(), employee);
-        getBSTPersonLastName().insert(employee.getLastName(), employee);
-        getRBTPersonName().insert(employee.getName(), employee);
-        getAVLPersonCode().insert(employee.getCode(), employee);
+        setTotalEmployees(getTotalEmployees() + 1);
+        getRBTEmployeeFullName().insert(employee.getFn(), employee);
+        getBSTEmployeeLastName().insert(employee.getLn(), employee);
+        getRBTEmployeeName().insert(employee.getName(), employee);
+        getAVLEmployeeCode().insert(employee.getCode(), employee);
     }
 
     public void removePerson(Employee person) {
-        getAVLPersonCode().delete(person.getCode());
-        getRBTPersonName().remove(person.getName());
-        getBSTPersonLastName().delete(person.getLastName());
-        getRBTPersonFullName().remove(person.getFullName());
-        setTotalPeople(getTotalPeople() - 1);
+        getAVLEmployeeCode().delete(person.getCode());
+        getRBTEmployeeName().remove(person.getName());
+        getBSTEmployeeLastName().delete(person.getLn());
+        getRBTEmployeeFullName().remove(person.getFn());
+        setTotalEmployees(getTotalEmployees() - 1);
     }
 
 }

@@ -1,4 +1,4 @@
-package userInterface;
+package ui.UserInterface.;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -14,8 +14,8 @@ import model.Employee;
 
 public class ListUsers implements Initializable{
 	
-	private model.objects.Cd cr;
-    private Controller xGUI;
+	private model.Cd cr;
+    private userInterface.Controller xGUI;
 
     @FXML
     private TableView<Employee> tblPlayer;

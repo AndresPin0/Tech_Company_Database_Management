@@ -15,7 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.Cd;
 import model.LoadingBar;
-import model.Structures.LoaderBar;
+import model.Structures.LoaderBarT;
 
 public class FXSplash implements Initializable {
 
@@ -26,7 +26,7 @@ public class FXSplash implements Initializable {
     private ImageView iLogo = new ImageView();
 
     private Cd fb;
-    private PreloaderBar bar;
+    private LoadingBar bar;
     private boolean isLoaded;
     private FXController xMenu;
     private Stage preloaderStage;
@@ -34,16 +34,16 @@ public class FXSplash implements Initializable {
 
     private static final int COUNT_LIMIT = 3000;
 
-    public FXSplash(Crud fb) {
+    public FXSplash(Cd fb) {
         this.fb = null;
-        bar = new PreloaderBar();
+        bar = new LoadingBar();
         isLoaded = false;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         bar.setActive(true);
-        new PreloaderBarThread(this, bar, fb).start();
+        new LoaderBarT(this, bar, fb).start();
         iLogo.setImage(new Image(new File("resources/img/logo/logo_small.png").toURI().toString()));
     }
 
@@ -75,7 +75,7 @@ public class FXSplash implements Initializable {
         return xMenu;
     }
 
-    public void setCr(Crud fb) {
+    public void setCr(Cd fb) {
         this.fb = fb;
     }
 

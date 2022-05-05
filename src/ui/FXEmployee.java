@@ -145,7 +145,7 @@ public class FXEmployee implements Initializable {
                 && (!txtNationality.getText().equals("")) && (tgActive.getSelectedToggle() != null) && (dateBirthday.getValue() != null)) {
             try{
                 String sex;
-                int code = cr.getTotalPeople() + 1;
+                int code = cr.getTotalEmployees() + 1;
                 String name = txtName.getText();
                 String lastName = txtLastName.getText();
                 JFXRadioButton selected = (JFXRadioButton) tgActive.getSelectedToggle();

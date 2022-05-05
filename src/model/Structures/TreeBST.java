@@ -3,7 +3,7 @@ package model.Structures;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TreeBST<T extends Comparable<T>, K> implements ITreeIBST<T, K, Node<T, K>>, Serializable {
+public class TreeBST<T extends Comparable<T>, K> implements ITreeBST<T, K, Node<T, K>>, Serializable {
 
     private Node<T, K> root;
     private int size;

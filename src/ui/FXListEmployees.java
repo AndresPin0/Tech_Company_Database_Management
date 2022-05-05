@@ -56,7 +56,7 @@ public class FXListEmployees implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setCBSearch();
-        onTableSearch(cr.getRBTPersonName().searchApproximate(""));
+        onTableSearch(cr.getRBTEmployeeName().searchApproximate(""));
         txtSearch.setDisable(true);
     }
 
@@ -96,13 +96,13 @@ public class FXListEmployees implements Initializable {
         ArrayList<Employee> s = new ArrayList<>();
 
         if (cbSearch.getValue().equals("Code")) {
-            s = cr.getAVLPersonCode().searchApproximate(txtSearch.getText());
+            s = cr.getAVLEmployeeCode().searchApproximate(txtSearch.getText());
         } else if (cbSearch.getValue().equals("Name")) {
-            s = cr.getRBTPersonFullName().searchApproximate(txtSearch.getText());
+            s = cr.getRBTEmployeeFullName().searchApproximate(txtSearch.getText());
         } else if (cbSearch.getValue().equals("First Name")) {
-            s = cr.getRBTPersonName().searchApproximate(txtSearch.getText());
+            s = cr.getRBTEmployeeName().searchApproximate(txtSearch.getText());
         } else if (cbSearch.getValue().equals("Last Name")) {
-            s = cr.getBSTPersonLastName().searchApproximate(txtSearch.getText());
+            s = cr.getBSTEmployeeLastName().searchApproximate(txtSearch.getText());
         }
         onTableSearch(s);
     }

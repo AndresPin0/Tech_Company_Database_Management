@@ -15,7 +15,7 @@ import model.Cd;
 public class FXMain extends Application {
 
     private Cd cr;
-    private FXSplash splashController;
+    private final FXSplash splashController;
 
     public FXMain() {
         cr = new Cd();

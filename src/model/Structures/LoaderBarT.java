@@ -2,15 +2,17 @@ package model.Structures;
 
 import javafx.application.Platform;
 import model.Cd;
+import model.LoadingBar;
+import model.Cd;
 import ui.FXSplash;
 
-public class LoaderBar extends Thread {
+public class LoaderBarT extends Thread {
 
-    private LoaderBar bar;
-    private FXSplash preloader;
+    private final LoadingBar bar;
+    private final FXSplash preloader;
     private Cd fb;
 
-    public LoaderBar(FXSplash preloader, LoaderBar bar, Cd fb) {
+    public LoaderBarT(FXSplash preloader, LoadingBar bar, Cd fb) {
         this.preloader = preloader;
         this.bar = bar;
         this.fb = fb;
@@ -47,7 +49,7 @@ public class LoaderBar extends Thread {
 
         }
 
-        Platform.runLater(new Thread(() -> preloader.postLoaded()));
+        Platform.runLater(new Thread(preloader::postLoaded));
 
     }
 

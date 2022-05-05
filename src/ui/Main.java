@@ -58,9 +58,9 @@ public class Main {
                         String height =  df.format((Math.random()*(1.80-1.50)+1.50));
                         String nationality = getNationality();
 
-                        Employee p = new Employee(fb.getTotalUsers() + 1, name, ln, sex, bd, height, nationality); //Person
+                        Employee p = new Employee(fb.getTotalEmployees() + 1, name, ln, sex, bd, height, nationality); //Person
 
-                        fb.addUser(p);
+                        fb.addEmployee(p);
                         num1++;
                     }
                 }

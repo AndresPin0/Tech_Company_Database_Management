@@ -1,6 +1,6 @@
 package model.Structures;
 
-public interface ITreeIBST<K, V, T> {
+public interface ITreeBST<K, V, T> {
 
     T search(T node, K key);
 
