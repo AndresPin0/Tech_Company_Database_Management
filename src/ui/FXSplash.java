@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
@@ -20,10 +21,10 @@ import model.Structures.LoaderBarT;
 public class FXSplash implements Initializable {
 
     @FXML
-    private Rectangle pBarRCT;
+    private ImageView iLogo;
 
     @FXML
-    private ImageView iLogo = new ImageView();
+    private ProgressBar loadingBar;
 
     private Cd fb;
     private LoadingBar bar;
@@ -43,20 +44,16 @@ public class FXSplash implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         bar.setActive(true);
+        System.out.println(new File("").getAbsolutePath());
         new LoaderBarT(this, bar, fb).start();
-        iLogo.setImage(new Image(new File("resources/img/logo/logo_small.png").toURI().toString()));
     }
 
-    public void loadBar() throws InterruptedException {
-        double newWidth = bar.getBarWidth();
-        pBarRCT.setWidth(newWidth);
-        double percentage = (newWidth / bar.LOADED_WIDTH) * 100;
-    }
+
 
     public void postLoaded() {
-        ((Stage) pBarRCT.getScene().getWindow()).close();
+        ((Stage) loadingBar.getScene().getWindow()).close();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/Menu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/Inicio.fxml"));
             fxmlLoader.setController(new FXController(fb));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
@@ -81,5 +78,9 @@ public class FXSplash implements Initializable {
 
     public void setxMenu(FXController xMenu) {
         this.xMenu = xMenu;
+    }
+
+    public void setProgress(double progress) {
+        loadingBar.setProgress(progress);
     }
 }

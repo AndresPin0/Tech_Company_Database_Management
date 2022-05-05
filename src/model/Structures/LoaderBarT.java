@@ -22,34 +22,36 @@ public class LoaderBarT extends Thread {
     @Override
     public void run() {
         Load load = new Load(preloader);
-        load.start();
+
+        System.out.println("Antes de la carga de datos");
+        load.doAction();
+        System.out.println("Despues de la carga de datos");
+
         pause(1000);
-        int LOADING_TIME_INTERVAL = 10;
-        while (bar.isActive()) {
-            if (!currentThread().isInterrupted()) {
-                bar.doProgress();
-                Platform.runLater(new Thread(() -> {
-                    try {
-                        preloader.loadBar();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }));
-                pause(LOADING_TIME_INTERVAL);
-                double percentage = (bar.getBarWidth() / bar.LOADED_WIDTH) * 100;
 
-                if (percentage >= 75.00 && percentage < 85.00) {
-                    pause(100);
-                }
+        //run On UI Thread
+        Platform.runLater(()->preloader.setProgress(0.1));
+        System.out.println("Despues de la pausa");
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.2));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.3));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.4));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.5));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.6));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.7));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.8));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(0.9));
+        pause(1000);
+        Platform.runLater(()->preloader.setProgress(1));
 
-                if (percentage >= 95.00 && load.isAlive()) {
-                    pause(2000);
-                }
-            }
-
-        }
-
-        Platform.runLater(new Thread(preloader::postLoaded));
+        Platform.runLater(preloader::postLoaded);
 
     }
 
