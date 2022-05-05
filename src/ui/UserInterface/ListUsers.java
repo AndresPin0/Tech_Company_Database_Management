@@ -10,40 +10,38 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import model.objects.Crud;
-import model.Person;
-import userInterface.Controller;
+import model.Employee;
 
 public class ListUsers implements Initializable{
 	
-	private Crud cr;
+	private model.objects.Cd cr;
     private Controller xGUI;
 
     @FXML
-    private TableView<Person> tblPlayer;
+    private TableView<Employee> tblPlayer;
 
     @FXML
-    private TableColumn<Person, Integer> tcCode;
+    private TableColumn<Employee, Integer> tcCode;
 
     @FXML
-    private TableColumn<Person, String> tcFullName;
+    private TableColumn<Employee, String> tcFullName;
 
     @FXML
-    private TableColumn<Person, String> tcSex;
+    private TableColumn<Employee, String> tcSex;
 
     @FXML
-    private TableColumn<Person, LocalDate> tcBirthay;
+    private TableColumn<Employee, LocalDate> tcBirthay;
 
     @FXML
-    private TableColumn<Person, Double> tcHeight;
+    private TableColumn<Employee, Double> tcHeight;
 
     @FXML
-    private TableColumn<Person, String> tcNationality;
+    private TableColumn<Employee, String> tcNationality;
 
     @FXML
     private ComboBox<> cbSearch;
     
-    private Person playerSelected;
+    private Employee playerSelected;
 
  
 

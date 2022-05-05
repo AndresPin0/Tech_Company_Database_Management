@@ -3,7 +3,7 @@ package ui;
 import model.Structures.linkList;
 import model.Country;
 import model.Cd;
-import model.User;
+import model.Employee;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -58,7 +58,7 @@ public class Main {
                         String height =  df.format((Math.random()*(1.80-1.50)+1.50));
                         String nationality = getNationality();
 
-                        User p = new User(fb.getTotalUsers() + 1, name, ln, sex, bd, height, nationality); //Person
+                        Employee p = new Employee(fb.getTotalUsers() + 1, name, ln, sex, bd, height, nationality); //Person
 
                         fb.addUser(p);
                         num1++;
