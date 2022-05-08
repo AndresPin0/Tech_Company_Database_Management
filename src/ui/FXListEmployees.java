@@ -23,8 +23,8 @@ import model.Employee;
 
 public class FXListEmployees implements Initializable {
 
-    private Cd cr;
-    private FXController xGUI;
+    private final Cd cr;
+    private final FXController xGUI;
     @FXML
     private StackPane stackPane;
     @FXML
@@ -45,8 +45,6 @@ public class FXListEmployees implements Initializable {
     private TableColumn<Employee, Double> tcHeight;
     @FXML
     private TableColumn<Employee, String> tcNationality;
-
-    private Employee employeeSelected;
 
     public FXListEmployees(Cd cr, FXController xGUI) {
         this.cr = cr;
@@ -83,7 +81,7 @@ public class FXListEmployees implements Initializable {
     @FXML
     public void onSelectPlayer(MouseEvent event) {
         if (event.getClickCount() == 2) {
-            employeeSelected = tblPlayer.getSelectionModel().getSelectedItem();
+            Employee employeeSelected = tblPlayer.getSelectionModel().getSelectedItem();
             if (employeeSelected != null) {
                 xGUI.refreshPlayer(employeeSelected);
                 xGUI.showAlert(true, "You have selected the employee successfully", stackPane);

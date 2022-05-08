@@ -3,7 +3,6 @@ package ui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -18,8 +17,6 @@ import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import model.Employee;
@@ -29,48 +26,33 @@ public class FXController implements Initializable {
     @FXML
     private StackPane stackPane;
     @FXML
-    private ImageView iLogo = new ImageView();
-    @FXML
-    private ImageView iPlayer = new ImageView();
-    @FXML
-    private ImageView iTeam = new ImageView();
-    @FXML
-    private ImageView iStat = new ImageView();
-    @FXML
     private JFXTextField txtAmount;
     @FXML
     private Pane pProgressBar;
 
-    private final String SRC_FILE = "data/persistent/Data.txt";
     private model.Cd fb;
-    private FXEmployee xPlayer;
-    private FXListEmployees xListPlayer;
+    private final FXEmployee employee;
+    private final FXListEmployees fxListEmployees;
 
     public FXController(model.Cd fb) {
         this.fb = fb;
-        xPlayer = new FXEmployee(this.fb, this);
-        xListPlayer = new FXListEmployees(this.fb, this);
+        employee = new FXEmployee(this.fb, this);
+        fxListEmployees = new FXListEmployees(this.fb, this);
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        setImages();
-
     }
 
-    public void setImages() {
-        iLogo.setImage(new Image(new File("docs/resources/DATA BASE MANAGER.png").toURI().toString()));
-        iPlayer.setImage(new Image(new File("resources/img/others/person.png").toURI().toString()));
-
-    }
 
     public void setFb(model.Cd fb) {
         this.fb = fb;
     }
 
     public void saveData() throws IOException {
+        String SRC_FILE = "data/Data.txt";
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SRC_FILE));
         oos.writeObject(this.fb);
         oos.close();
@@ -86,8 +68,8 @@ public class FXController implements Initializable {
     }
 
     public void openListPlayers() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui/ui.fxml/ListEmployees.fxml"));
-        fxmlLoader.setController(xListPlayer);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/ListEmployees.fxml"));
+        fxmlLoader.setController(fxListEmployees);
         Parent root = fxmlLoader.load();
         newStage(root);
     }
@@ -108,8 +90,8 @@ public class FXController implements Initializable {
 
     @FXML
     public void onBPlayers(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui/ui.fxml/Employee.fxml"));
-        fxmlLoader.setController(xPlayer);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/Employee.fxml"));
+        fxmlLoader.setController(employee);
         Parent root = fxmlLoader.load();
         newStage(root);
     }
@@ -138,6 +120,6 @@ public class FXController implements Initializable {
 
 
     public void refreshPlayer(Employee p) {
-        xPlayer.refreshPlayer(p);
+        employee.refreshEmployee(p);
     }
 }

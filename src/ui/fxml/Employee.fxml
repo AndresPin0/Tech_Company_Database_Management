@@ -21,7 +21,7 @@
             </ImageView>
             <Pane layoutX="29.0" layoutY="154.0" prefHeight="290.0" prefWidth="520.0">
                <children>
-                  <JFXTextField fx:id="txtHeight" focusColor="#4d4d4d" layoutX="144.0" layoutY="130.0" prefHeight="18.0" prefWidth="107.0" text="Height" unFocusColor="#7596bb" />
+                  <JFXTextField fx:id="txtHeight" focusColor="#4d4d4d" layoutX="144.0" layoutY="130.0" prefHeight="18.0" prefWidth="107.0" promptText="Height" unFocusColor="#7596bb" />
                   <JFXRadioButton fx:id="rbMen" layoutX="144.0" layoutY="222.0" text="Male">
                      <toggleGroup>
                         <ToggleGroup fx:id="tgActive" />
@@ -29,10 +29,10 @@
                   <JFXRadioButton fx:id="rbWomen" layoutX="147.0" layoutY="255.0" text="Female" toggleGroup="$tgActive" />
                   <JFXButton contentDisplay="CENTER" layoutX="388.0" layoutY="38.0" onAction="#onSearchPlayer" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #9FBCDD;" text="Search" />
                   <ImageView fx:id="iPhoto" fitHeight="124.0" fitWidth="212.0" layoutX="496.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXTextField fx:id="txtName" focusColor="#4d4d4d" layoutX="144.0" layoutY="36.0" prefHeight="31.0" prefWidth="229.0" text="Name" unFocusColor="#7596bb" />
-                  <JFXTextField fx:id="txtNationality" focusColor="#4d4d4d" layoutX="147.0" layoutY="163.0" prefHeight="31.0" prefWidth="130.0" text="Nationality" unFocusColor="#7596bb" />
-                  <JFXTextField fx:id="txtLastName" focusColor="#4d4d4d" layoutX="147.0" layoutY="67.0" prefHeight="31.0" prefWidth="229.0" text="Last Name" unFocusColor="#7596bb" />
-                  <JFXDatePicker fx:id="dateBirthday" defaultColor="#7596bb" layoutX="144.0" layoutY="98.0" prefHeight="31.0" prefWidth="155.0" />
+                  <JFXTextField fx:id="txtName" focusColor="#4d4d4d" layoutX="144.0" layoutY="36.0" prefHeight="31.0" prefWidth="229.0" promptText="Name" unFocusColor="#7596bb" />
+                  <JFXTextField fx:id="txtNationality" focusColor="#4d4d4d" layoutX="147.0" layoutY="163.0" prefHeight="31.0" prefWidth="130.0" promptText="Nationality" unFocusColor="#7596bb" />
+                  <JFXTextField fx:id="txtLastName" focusColor="#4d4d4d" layoutX="147.0" layoutY="67.0" prefHeight="31.0" prefWidth="229.0" promptText="Last Name" unFocusColor="#7596bb" />
+                  <JFXDatePicker fx:id="dateBirthday" defaultColor="#7596bb" layoutX="144.0" layoutY="98.0" prefHeight="31.0" prefWidth="155.0" promptText="Birthday" />
                   <JFXButton contentDisplay="CENTER" layoutX="18.0" layoutY="47.0" onAction="#onSave" prefHeight="45.0" prefWidth="87.0" style="-fx-background-color: #9FBCDD;" text="Save" textAlignment="CENTER" />
                   <JFXButton contentDisplay="CENTER" layoutX="18.0" layoutY="98.0" onAction="#onUpdate" prefHeight="45.0" prefWidth="87.0" style="-fx-background-color: #9FBCDD;" text="Update" textAlignment="CENTER" />
                   <JFXButton contentDisplay="CENTER" layoutX="18.0" layoutY="156.0" onAction="#onClear" prefHeight="45.0" prefWidth="87.0" style="-fx-background-color: #9FBCDD;" text="Clear" textAlignment="CENTER" />

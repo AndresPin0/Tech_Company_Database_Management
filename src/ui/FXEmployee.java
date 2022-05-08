@@ -3,7 +3,6 @@ package ui;
 
 import com.jfoenix.controls.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -13,7 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -22,9 +20,8 @@ import model.Employee;
 
 public class FXEmployee implements Initializable {
 
-    private Cd cr;
-    private FXController xGUI;
-    private String imagePath;
+    private final Cd cr;
+    private final FXController xGUI;
     @FXML
     private StackPane stackPane;
 
@@ -82,7 +79,6 @@ public class FXEmployee implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setImages();
         setTxtProperties();
     }
 
@@ -105,19 +101,6 @@ public class FXEmployee implements Initializable {
 
 
     }
-
-    public void setImages() {
-        iSave.setImage(new Image(new File("resources/img/others/save-disk.png").toURI().toString()));
-        iRemove.setImage(new Image(new File("resources/img/others/remove-report.png").toURI().toString()));
-        iSearch.setImage(new Image(new File("resources/img/others/search.png").toURI().toString()));
-        iClear.setImage(new Image(new File("resources/img/others/clear.png").toURI().toString()));
-        iUpdate.setImage(new Image(new File("resources/img/others/update-file.png").toURI().toString()));
-
-
-
-
-    }
-
 
     @FXML
     public void onSearchPlayer() throws IOException {
@@ -211,7 +194,7 @@ public class FXEmployee implements Initializable {
 
     }
 
-    public void refreshPlayer(Employee e){
+    public void refreshEmployee(Employee e){
         employeeSelected = e;
         txtName.setText(employeeSelected.getName());
         txtLastName.setText(employeeSelected.getLn());
@@ -241,7 +224,6 @@ public class FXEmployee implements Initializable {
         dateBirthday.setValue(null);
         tgActive.selectToggle(null);
         iPhoto.setImage(null);
-        imagePath = "";
     }
 
     @FXML

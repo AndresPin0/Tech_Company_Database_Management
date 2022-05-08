@@ -10,9 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import model.Cd;
 import model.LoadingBar;
@@ -27,8 +25,7 @@ public class FXSplash implements Initializable {
     private ProgressBar loadingBar;
 
     private Cd fb;
-    private LoadingBar bar;
-    private boolean isLoaded;
+    private final LoadingBar bar;
     private FXController xMenu;
     private Stage preloaderStage;
     private Scene scene;
@@ -38,7 +35,7 @@ public class FXSplash implements Initializable {
     public FXSplash(Cd fb) {
         this.fb = null;
         bar = new LoadingBar();
-        isLoaded = false;
+        boolean isLoaded = false;
     }
 
     @Override
@@ -59,7 +56,6 @@ public class FXSplash implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene((scene));
-            stage.getIcons().add(new Image(new File("resources/img/logo/logo_small_icon_only.png").toURI().toString()));
             stage.setResizable(false);
             stage.setTitle("Simulation");
             stage.show();

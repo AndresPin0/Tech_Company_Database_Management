@@ -33,7 +33,7 @@
                      <font>
                         <Font size="12.0" />
                      </font></Label>
-                  <JFXTextField fx:id="txtAmount" layoutX="24.0" layoutY="49.0" prefHeight="43.0" prefWidth="229.0" promptText="Amount" text="Write Amount" unFocusColor="#d7d0d0" />
+                  <JFXTextField fx:id="txtAmount" layoutX="24.0" layoutY="49.0" prefHeight="43.0" prefWidth="229.0" promptText="Amount" unFocusColor="#d7d0d0" />
                   <MenuBar layoutX="494.0" layoutY="14.0" prefHeight="32.0" prefWidth="149.0" style="-fx-background-color: #D9D9D9;">
                     <menus>
                         <Menu mnemonicParsing="false" style="color: #FFFFFF;" text="Import">

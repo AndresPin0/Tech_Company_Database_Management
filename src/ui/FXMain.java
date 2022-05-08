@@ -1,24 +1,18 @@
 package ui;
 
-
-import java.io.File;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.Cd;
 
 public class FXMain extends Application {
 
-    private Cd cr;
     private final FXSplash splashController;
 
     public FXMain() {
-        cr = new Cd();
+        Cd cr = new Cd();
         splashController = new FXSplash(cr);
     }
 
@@ -28,11 +22,8 @@ public class FXMain extends Application {
         fxmlLoader.setController(splashController);
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        //scene.setFill(Color.TRANSPARENT);
-        //primaryStage.getIcons().add(new Image(new File("resources/img/logo/logo_small_icon_only.png").toURI().toString()));
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        //primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Loading...");
         primaryStage.show();
     }

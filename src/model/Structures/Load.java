@@ -1,17 +1,14 @@
 package model.Structures;
 
-import javafx.application.Platform;
 import model.Cd;
 import ui.FXSplash;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.Serializable;
 
 public class Load {
 
-    private final String SRC_FILE = "data/Data.txt";
-    private FXSplash fxSplash;
+    private final FXSplash fxSplash;
     private ObjectInputStream is;
 
     public Load(FXSplash splash) {
@@ -31,6 +28,7 @@ public class Load {
     }
 
     public Cd read() throws IOException, ClassNotFoundException {
+        String SRC_FILE = "data/Data.txt";
         is = new ObjectInputStream(new FileInputStream(SRC_FILE));
         return (Cd) is.readObject();
     }
